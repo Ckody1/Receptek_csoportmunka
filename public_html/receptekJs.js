@@ -28,7 +28,11 @@ function kiir(){
     }
     //$("article table tr").click(receptKivalaszt());
 }
-
+function kiir(){
+    
+    
+    
+}
 function receptKivalaszt(){
 //    console.log("itt vagyok");
     
@@ -39,9 +43,16 @@ function receptKivalaszt(){
     megjelenit(id);
 }
 
+function torol(){
+    $
+}
+function modosit(){
+    
+}
+
 function megjelenit(id){
     $("#recept").empty();
-    $("#recept").append("<img src='" +receptekTomb[id].kep+"' alt='"+receptekTomb[id].nev+"'>");
+    $("#recept").append("<img src='" +receptekTomb[id].kep+"' alt='"+receptekTomb[id].nev+"'>"+ + "</td>"+ "<td>"+"<input type='button' id='TOROL' name='TOROL' value='TÖRÖL'>"+"</td>" + "</td>"+ "<td>"+"<input type='button' id='Modosit' name='Modosit' value='Modosit'>"+"</td>");
     $("#recept").append("<h2>");
     $("#recept h2").append(receptekTomb[id].nev);
     $("#recept").append("<p>");
