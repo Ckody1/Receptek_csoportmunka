@@ -10,22 +10,35 @@ $(function(){
     $("#bal").click(balraLeptet);
     $("#jobb").click(jobbraLeptet);
     $("article").on("click", "tr", receptKivalaszt);
+    $("#torles").click(torles);
+    $("#modositas").click(modositas);
+    
 });
 
 var receptekTomb = [];
 var leptetoIndex = 0;
 
 function kiir(){
-    $("article").append("<table>");
-    $("article table").append("<tr>");
-    $("article table tr").append("<th>Recept név</th><th>Elkészítési idő</th><th>Leírás</th><th>Kép</th><th>Hozzávalók</th>");
+//    $("article div").append("");
+
+    $("article").append("<div>");
+    $("article div").append("<p>");
+   // $("article div").append("<p>");
     
-    for (var i = 0; i < receptekTomb.length; i++) {
-        $("article table").append("<tr id='"+ i +"'>");
-        for (var item in receptekTomb[i]) {
-            $("article table tr").eq(i + 1).append("<td>" + receptekTomb[i][item] + "</td>");
-        }
-    }
+    //$("article div p").append("<th>Recept név</th><th>Elkészítési idő</th><th>Leírás</th><th>Kép</th><th>Kategória</th><th>Ár</th>");
+    $("article div p").append("<th>Recept név</th>");
+    
+    
+    
+    
+    
+    
+//    for (var i = 0; i < receptekTomb.length; i++) {
+//        $("article div").append("<p id='"+ i +"'>");
+//        for (var item in receptekTomb[i]) {
+//            $("article div p").eq(i + 1).append("<p>" + receptekTomb[i][item] + "</p");
+//        }
+//    }
     //$("article table tr").click(receptKivalaszt());
 }
 function kiir(){
@@ -60,7 +73,7 @@ function megjelenit(id){
     $("#recept").append("<p>");
     $("#recept p").eq(1).append("Elkészítési idő: " + receptekTomb[id].ido);
     $("#recept").append("<h3>");
-    $("#recept h3").append("Hozzávalók");
+    $("#recept h3").append("Kategória "+receptekTomb[id].kategoria);
     $("#recept").append("<ul>");
     var hozzavalok = receptekTomb[id].hozzavalok;
     console.log(hozzavalok);
@@ -84,4 +97,13 @@ function jobbraLeptet(){
         leptetoIndex = 0;
     }
     megjelenit(leptetoIndex);
+}
+
+
+function torles(){
+ $("#torles").remove();
+}
+
+function modositas(){
+ 
 }
