@@ -60,7 +60,7 @@ function torol(){
     $
 }
 function modosit(){
-    
+    $
 }
 
 function megjelenit(id){
