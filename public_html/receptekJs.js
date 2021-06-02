@@ -1,54 +1,39 @@
-$(function(){ 
+$(function () {
     $.ajax({
         url: "receptek.json",
-        success: function(result){
+        success: function (result) {
             console.log(result);
             receptekTomb = result;
             kiir();
         }
-    }); 
+    });
     $("#bal").click(balraLeptet);
     $("#jobb").click(jobbraLeptet);
     $("article").on("click", "tr", receptKivalaszt);
     $("#torles").click(torles);
     $("#modositas").click(modositas);
-    
+
 });
 
 var receptekTomb = [];
 var leptetoIndex = 0;
 
-function kiir(){
-//    $("article div").append("");
+function kiir() {
+    $("article").append("<table>");
+    $("article table").append("<tr>");
+    $("article table tr").append("<th>Recept név</th><th>Elkészítési idő</th><th>Leírás</th><th>Kép</th><th>Hozzávalók</th>");
 
-    $("article").append("<div>");
-    $("article div").append("<p>");
-   // $("article div").append("<p>");
-    
-    //$("article div p").append("<th>Recept név</th><th>Elkészítési idő</th><th>Leírás</th><th>Kép</th><th>Kategória</th><th>Ár</th>");
-    $("article div p").append("<th>Recept név</th>");
-    
-    
-    
-    
-    
-    
-//    for (var i = 0; i < receptekTomb.length; i++) {
-//        $("article div").append("<p id='"+ i +"'>");
-//        for (var item in receptekTomb[i]) {
-//            $("article div p").eq(i + 1).append("<p>" + receptekTomb[i][item] + "</p");
-//        }
-//    }
-    //$("article table tr").click(receptKivalaszt());
+    for (var i = 0; i < receptekTomb.length; i++) {
+        $("article table").append("<tr id='" + i + "'>");
+        for (var item in receptekTomb[i]) {
+            $("article table tr").eq(i + 1).append("<td>" + receptekTomb[i][item] + "</td>");
+        }
+    }
 }
-function kiir(){
-    
-    
-    
-}
-function receptKivalaszt(){
+
+function receptKivalaszt() {
 //    console.log("itt vagyok");
-    
+
     var id = $(this).attr("id");
     console.log(id);
     console.log(receptekTomb[id]);
@@ -56,16 +41,16 @@ function receptKivalaszt(){
     megjelenit(id);
 }
 
-function torol(){
+function torol() {
     $
 }
-function modosit(){
+function modosit() {
     $
 }
 
-function megjelenit(id){
+function megjelenit(id) {
     $("#recept").empty();
-    $("#recept").append("<img src='" +receptekTomb[id].kep+"' alt='"+receptekTomb[id].nev+"'>"+ + "</td>"+ "<td>"+"<input type='button' id='TOROL' name='TOROL' value='TÖRÖL'>"+"</td>" + "</td>"+ "<td>"+"<input type='button' id='Modosit' name='Modosit' value='Modosit'>"+"</td>");
+    $("#recept").append("<img src='" + receptekTomb[id].kep + "' alt='" + receptekTomb[id].nev + "'>" + +"</td>" + "<td>" + "<input type='button' id='TOROL' name='TOROL' value='TÖRÖL'>" + "</td>" + "</td>" + "<td>" + "<input type='button' id='Modosit' name='Modosit' value='Modosit'>" + "</td>");
     $("#recept").append("<h2>");
     $("#recept h2").append(receptekTomb[id].nev);
     $("#recept").append("<p>");
@@ -73,37 +58,66 @@ function megjelenit(id){
     $("#recept").append("<p>");
     $("#recept p").eq(1).append("Elkészítési idő: " + receptekTomb[id].ido);
     $("#recept").append("<h3>");
-    $("#recept h3").append("Kategória "+receptekTomb[id].kategoria);
+    $("#recept h3").append("Kategória " + receptekTomb[id].kategoria);
     $("#recept").append("<ul>");
     var hozzavalok = receptekTomb[id].hozzavalok;
     console.log(hozzavalok);
     for (var i = 0; i < hozzavalok.length; i++) {
         for (var item in hozzavalok[i]) {
-            $("#recept ul").append("<li>"+ item + " " + hozzavalok[i][item] + "</li>");
+            $("#recept ul").append("<li>" + item + " " + hozzavalok[i][item] + "</li>");
         }
     }
 }
 
-function balraLeptet(){
-    leptetoIndex --;
-    if(leptetoIndex < 0){
-        leptetoIndex = receptekTomb.length-1;
+function balraLeptet() {
+    leptetoIndex--;
+    if (leptetoIndex < 0) {
+        leptetoIndex = receptekTomb.length - 1;
     }
     megjelenit(leptetoIndex);
 }
-function jobbraLeptet(){
-    leptetoIndex ++;
-    if(leptetoIndex > receptekTomb.length - 1){
+function jobbraLeptet() {
+    leptetoIndex++;
+    if (leptetoIndex > receptekTomb.length - 1) {
         leptetoIndex = 0;
     }
     megjelenit(leptetoIndex);
 }
 
 
-function torles(){
- $("#torles").remove();
+function torles() {
+    $("#torles").remove();
 }
 
-function modositas(){
- 
+function modositas() {
+
+}
+
+function csuszka() {
+    var arTomb = [1550, 3000, 2000]
+    
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+
+    $("article").empty();
+
+    $("article").append("<table>");
+    $("article table").append("<tr>");
+    $("article table tr").append("<th>Recept név</th><th>Elkészítési idő</th><th>Leírás</th><th>Kép</th><th>Hozzávalók</th>");
+
+    for (var i = 0; i < receptekTomb.length; i++) {
+        $("article table").append("<tr id='" + i + "'>");
+            if (arTomb[i] <= slider.value) {
+                for (var item in receptekTomb[i]) {
+                    $("article table tr").eq(i + 1).append("<td>" + receptekTomb[i][item] + "</td>");
+                }
+            }
+            
+        
+    }
 }
