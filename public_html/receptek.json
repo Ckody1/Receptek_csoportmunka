@@ -1,7 +1,7 @@
 [
     {
         "nev": "Somlói galuska",
-        "ido": "60p",
+        "ido": "60",
         "leiras": "Így készül a Somlói galuska",
         "kep": "kepek/somloi.png",
         "kategoria":"édesség",
@@ -10,7 +10,7 @@
     },
     {
         "nev": "Pörkölt",
-        "ido": "30p",
+        "ido": "30",
         "leiras": "Így készül a Pörkölt",
         "kep": "kepek/porkolt.png",
         "kategoria":"főétel",
@@ -18,7 +18,7 @@
     },
     {
         "nev": "Leves",
-        "ido": "30p",
+        "ido": "30",
         "leiras": "Így készül a Leves",
         "kep": "kepek/articsoka.png",
         "kategoria":"leves",

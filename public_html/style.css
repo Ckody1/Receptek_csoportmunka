@@ -20,7 +20,7 @@ tr:nth-child(odd){
     background: lightgray;
 }
 
-section{
+#baljobb{
     display: grid;
     grid-template-columns: 50px auto 15px;
 }

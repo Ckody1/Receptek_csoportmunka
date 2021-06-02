@@ -9,14 +9,20 @@ $(function () {
     });
     $("#bal").click(balraLeptet);
     $("#jobb").click(jobbraLeptet);
+    $("article").on("click", "tr", etelKivalaszt);
     $("article").on("click", "tr", receptKivalaszt);
     $("#torles").click(torles);
     $("#modositas").click(modositas);
-
+    
 });
 
 var receptekTomb = [];
 var leptetoIndex = 0;
+var menuFejlec = false;
+var menuI = 0;
+var osszIdo = 0;
+var osszAr = 0;
+var osszEdesseg = 0;
 
 function kiir() {
     $("article").append("<table>");
@@ -94,7 +100,7 @@ function modositas() {
 }
 
 function csuszka() {
-    var arTomb = [1550, 3000, 2000]
+    var arTomb = [1550, 3000, 2000];
     
     var slider = document.getElementById("myRange");
     var output = document.getElementById("demo");
@@ -102,7 +108,7 @@ function csuszka() {
 
     slider.oninput = function () {
         output.innerHTML = this.value;
-    }
+    };
 
     $("article").empty();
 
@@ -120,4 +126,34 @@ function csuszka() {
             
         
     }
+}
+
+function etelKivalaszt(){
+    var adottTdId = parseInt($(this).attr("id"));
+    menuOsszeallit(adottTdId);
+    console.log(adottTdId);
+    console.log("LEFUT");
+}
+
+
+function menuOsszeallit(index){
+//    $("section").append("<p id='menuKerdes'>")
+    
+    if (!menuFejlec) {
+        $("#menu").append("<table>");
+        $("#menu table").append("<tr>");
+        $("#menu table tr").append("<th>Recept név</th><th>Elkészítési idő</th><th>Elkészítési idő összesen</th><th>Desszertek száma</th><th>Az Árak Összege</th>");
+        menuFejlec = true;
+    }
+    $("#menu table").append("<tr>");
+    $("#menu table tr").eq(menuI + 1).append("<td>" + receptekTomb[index].nev + "</td>").append("<td>" + receptekTomb[index].ido + "</td>");
+    osszIdo += parseInt(receptekTomb[index].ido);
+    $("#menu table tr").eq(menuI + 1).append("<td>" + osszIdo + " perc" + "</td>");
+    if(receptekTomb[index].kategoria === "édesség"){
+        osszEdesseg ++;
+    }
+    $("#menu table tr").eq(menuI + 1).append("<td>"+ osszEdesseg +" db </td>");
+    osszAr += parseInt(receptekTomb[index].ar);
+    $("#menu table tr").eq(menuI + 1).append("<td>"+ osszAr +" Ft </td>");
+    menuI ++;
 }
