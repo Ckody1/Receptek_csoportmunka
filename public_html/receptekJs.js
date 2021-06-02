@@ -27,13 +27,15 @@ var osszEdesseg = 0;
 function kiir() {
     $("article").append("<table>");
     $("article table").append("<tr>");
-    $("article table tr").append("<th>Recept név</th><th>Elkészítési idő</th><th>Leírás</th><th>Kép</th><th>Hozzávalók</th>");
+    $("article table tr").append("<th>Recept név</th><th>Elkészítési idő</th><th>Leírás</th><th>Kép</th><th>Hozzávalók</th><th>Ár</th><th>Rendelési mennyiség</th>");
 
     for (var i = 0; i < receptekTomb.length; i++) {
         $("article table").append("<tr id='" + i + "'>");
         for (var item in receptekTomb[i]) {
             $("article table tr").eq(i + 1).append("<td>" + receptekTomb[i][item] + "</td>");
         }
+             $("article table tr").eq(i+1).append("<td> <input type=\"text\" id=\"fname\" name=\"fname\"></td>");
+
     }
 }
 
